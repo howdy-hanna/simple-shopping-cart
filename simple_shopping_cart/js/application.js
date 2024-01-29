@@ -12,6 +12,7 @@ $(document).ready(function () {
   //remove item from cart
 $('.btn.remove').on('click', function (event) {
   $(this).closest('tr').remove();
+  //add part to update total cost 
 });
 
 });
