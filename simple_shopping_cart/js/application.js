@@ -8,13 +8,21 @@ $(document).ready(function () {
     var totalCost = itemPrice * itemQty;
     $(ele).children('.cost').html(totalCost);
   });
+
+  //remove item from cart
+$('.btn.remove').on('click', function (event) {
+  $(this).closest('tr').remove();
+});
+
 });
 
     
+//find cart cost
+var sum = function (acc, x) { return acc + x; };
+
+var cartCost = [];
 
 
-
-//remove item from cart
 
 
 //add item to cart
