@@ -32,7 +32,7 @@ $(document).ready(function() {
     $('tbody').append('<tr>' +
       '<td class="item">' + name + '</td>' +
       '<td class="price"><input type="number" value="' + price + '" /></td>' +
-      '<td class="qty"><input type="number" value="' + quantity + '" /></td>' +
+      '<td class="qty"><input type="number" value="' + qty + '" /></td>' +
       '<td class="cost"></td>' +
       '<td><button class="btn btn-light btn-sm remove">remove</button></td>' +
       '</tr>');
@@ -43,6 +43,7 @@ $(document).ready(function() {
   $('.btn.remove').on('click', function(event) {
     $(this).closest('tr').remove();
     //add part to update total cost 
+    updateCartTotal();
   });
 
 });
