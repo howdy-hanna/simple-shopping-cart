@@ -22,43 +22,44 @@ $(document).ready(function() {
     $('.cart-total span').html(cartTotal.toFixed(2));
   }
 
-   //remove item from cart
+  //add item to cart
+  $('#addItem').on('submit', function (event) {
+    event.preventDefault();
+    var name = $(this).find('[name=name]').val();
+    var cost = parseFloat($(this).find('[name=price]').val());
+    var qty = parseFloat($(this).find('[name=qty]').val());
+
+    var subtotal = qty * cost;
+    
+    $('tbody').append('<tr>' +
+      '<td class="item">' + name + '</td>' +
+      '<td class="price"><input type="number" value="' + cost + '" /></td>' +
+      '<td class="qty"><input type="number" value="' + qty + '" /></td>' +
+      '<td class="cost">' + subtotal.toFixed(2) + '</td>' +
+      '<td><button class="btn btn-light btn remove">Remove</button></td>' +
+      '</tr>');
+    
+    updateCartTotal(); 
+    
+      $(this).find('[name=name]').val('');
+      $(this).find('[name=price]').val('');
+      $(this).find('[name=qty]').val('');
+  });
+
+
+  //remove item from cart
    $(document).on('click', '.btn.remove', function(event) {
     $(this).closest('tr').remove();
     //add part to update total cost 
     updateCartTotal();
   });
 
-  var timeout;
-  $(document).on('input', 'tr input', function () {
-    clearTimeout(timeout);
-    timeout = setTimeout(function () {
-      updateCartTotal();
-    }, 1000);
+    var timeout;
+    $(document).on('input', 'tr input', function () {
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        updateCartTotal();
+      }, 1000);
   });
-
-  //add item to cart
-  $('#addItem').on('submit', function(event) {
-    event.preventDefault();
-    var name = $(this).children('[name=name]').val();
-    var price = $(this).children('[name=price]').val();
-    var qty = $(this).children('[name=qty]').val();
-
-    $('tbody').append('<tr>' +
-      '<td class="item">' + name + '</td>' +
-      '<td class="price"><input type="number" value="' + price + '" /></td>' +
-      '<td class="qty"><input type="number" value="' + qty + '" /></td>' +
-      '<td class="cost"></td>' +
-      '<td><button class="btn btn-light btn-sm remove">remove</button></td>' +
-      '</tr>');
-
-      updateCartTotal(); 
-      $(this).children('[name=name]').val('');
-      $(this).children('[name=price]').val('');
-      $(this).children('[name=qty]').val('');
-
-
-  });
-
 
 });
