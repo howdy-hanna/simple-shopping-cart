@@ -19,8 +19,23 @@ $(document).ready(function() {
       cartTotal += parseFloat($(ele).find('td.cost').text()) || 0;
     });
 
-    $('.cart-total span').html(cartTotal);
+    $('.cart-total span').html(cartTotal.toFixed(2));
   }
+
+   //remove item from cart
+   $(document).on('click', '.btn.remove', function(event) {
+    $(this).closest('tr').remove();
+    //add part to update total cost 
+    updateCartTotal();
+  });
+
+  var timeout;
+  $(document).on('input', 'tr input', function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      updateCartTotal();
+    }, 1000);
+  });
 
   //add item to cart
   $('#addItem').on('submit', function(event) {
@@ -36,14 +51,14 @@ $(document).ready(function() {
       '<td class="cost"></td>' +
       '<td><button class="btn btn-light btn-sm remove">remove</button></td>' +
       '</tr>');
-  });
+
+      updateCartTotal(); 
+      $(this).children('[name=name]').val('');
+      $(this).children('[name=price]').val('');
+      $(this).children('[name=qty]').val('');
 
 
-  //remove item from cart
-  $(document).on('click', '.btn.remove', function(event) {
-    $(this).closest('tr').remove();
-    //add part to update total cost 
-    updateCartTotal();
   });
+
 
 });
