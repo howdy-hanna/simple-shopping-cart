@@ -1,0 +1,27 @@
+h1 {
+  color: red;
+  padding-bottom: 15px;
+}
+
+.btn:hover {
+  background-color: green;
+  color: pink;
+}
+
+.table {
+  background-color: pink;
+  border-color: red;
+  border-style: solid;
+}
+
+tr {
+  color: red;
+}
+
+h3 {
+  color: red;
+}
+
+.labels {
+  font-size: 20px;
+}
