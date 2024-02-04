@@ -33,7 +33,7 @@ $(document).ready(function() {
     
     $('tbody').append('<tr>' +
       '<td class="item">' + name + '</td>' +
-      '<td class="price"><input type="number" value="' + cost + '" /></td>' +
+      '<td class="price">' + cost + '</td>' +
       '<td class="qty"><input type="number" value="' + qty + '" /></td>' +
       '<td class="cost">' + subtotal.toFixed(2) + '</td>' +
       '<td><button class="btn btn-light btn remove">Remove</button></td>' +
